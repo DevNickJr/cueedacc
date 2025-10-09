@@ -79,7 +79,7 @@ const Services = () => {
     }, [reset])
 
     return (
-        <section className='min-h-[calc(100vh)] relative flex overflow-clip w-full'>
+        <section className='min-h-[calc(100vh)] relative flex overflow-clip w-full no-scrollbar'>
             <div className='flex overflow-auto relative w-full'>
                 {
                     services?.map((item, i) => (  
