@@ -4,6 +4,7 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Dot, MoveLeft, MoveRight } from "lucide-react";
 import Footer from "@/components/Footer";
+import VerticalCutText from "@/components/VerticalCutText";
 
 export default function Home() {
   return (
@@ -36,7 +37,20 @@ export default function Home() {
               </div>
             </div>
             <p className="font-bold text-[#444444] text-5xl mt-28 leading-tight tracking-[-4%]">
-              Our mission is to dominate our selected industries and disciplines, maintain a market position ahead of our competitors in these areas, and be the acknowledged Performance Leader in our industry.
+              <VerticalCutText
+                splitBy="characters"
+                staggerDuration={0.025}
+                staggerFrom="first"
+                transition={{
+                  type: "spring",
+                  stiffness: 200,
+                  damping: 21,
+                  delay: 0.5
+                }}
+                  >
+                     Our mission is to dominate our selected industries and disciplines, maintain a market position ahead of our competitors in these areas, and be the acknowledged Performance Leader in our industry.
+                </VerticalCutText>
+             
             </p>
           </div>
         </section>
@@ -178,7 +192,7 @@ export default function Home() {
                   className='absolute top-0 left-0 w-full max-w-[882px] h-full bg-linear-to-r from-[#FB4808] to-[#FB480800] mix-blend-multiply'
                 />
               <div className='relative w-full text-white z-1 lg:min-h-[calc(100vh-72px)] flex items-center'>
-                <div className='flex flex-col gap-14 max-w-[680px] relative section z-1 py-6 md:py-14 lg:py-24'>
+                <div className='flex flex-col gap-14 max-w-[680px] relative section z-1  py-6 md:py-14 lg:py-24'>
                     <h3 className='text-5xl font-semibold leading-tight tracking-[-4%]'>Building tomorrow&apos;s energy infrastructure, today</h3>
                     <Button className='px-10 py-3 font-semibold text-black bg-white rounded-none w-fit'>
                       Partner with us
