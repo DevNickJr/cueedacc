@@ -1,12 +1,10 @@
 "use client"
 import VerticalCutText from '@/components/VerticalCutText'
-import { useInView } from 'motion/react'
 import Image from 'next/image'
 import React from 'react'
 
 const Trust = () => {
-  const ref = React.useRef(null)
-  const isInView = useInView(ref)
+
   return (
     <section className="py-20 leading-tight text-black section">
     <div className="max-w-[1200px] mx-auto">
@@ -33,7 +31,7 @@ const Trust = () => {
           }
         </div>
       </div>
-      <p className="font-bold text-[#444444] text-4xl md:text-5xl mt-28 leading-tight tracking-[-4%]">
+      <p className="font-bold text-[#444444] text-3xl md:text-5xl mt-28 leading-tight tracking-[-4%]">
         <VerticalCutText
           splitBy="characters"
           staggerDuration={0.025}
@@ -44,7 +42,6 @@ const Trust = () => {
             damping: 21,
             delay: 0.5
           }}
-          isInView={isInView}
             >
                Our mission is to dominate our selected industries and disciplines, maintain a market position ahead of our competitors in these areas, and be the acknowledged Performance Leader in our industry.
           </VerticalCutText>

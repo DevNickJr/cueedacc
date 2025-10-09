@@ -27,7 +27,6 @@ interface TextProps {
   onStart?: () => void
   onComplete?: () => void
   autoStart?: boolean // Whether to start the animation automatically
-  isInView?: boolean
 }
 
 // Ref interface to allow external control of the animation
@@ -61,13 +60,12 @@ const VerticalCutText = forwardRef<VerticalCutTextRef, TextProps>(
       onStart,
       onComplete,
       autoStart = false,
-      isInView,
       ...props
     },
     ref
   ) => {
-
     const containerRef = useRef<HTMLSpanElement>(null)
+    const isInView = useInView(containerRef)
     const text =
       typeof children === "string" ? children : children?.toString() || ""
     const [isAnimating, setIsAnimating] = useState(false)
@@ -145,6 +143,7 @@ const VerticalCutText = forwardRef<VerticalCutTextRef, TextProps>(
       }
     }, [autoStart, startAnimation])
 
+    console.log({ isInView })
     useEffect(() => {
       if (isInView) {
         startAnimation()
