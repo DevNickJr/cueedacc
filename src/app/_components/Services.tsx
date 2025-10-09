@@ -120,7 +120,7 @@ const Service = ({
     prev?: () => void;
   }) => {
     return (
-      <AnimatePresence mode="wait">
+      <AnimatePresence>
         {current === index && (
           <motion.div
             key={item.slug} // ✅ unique key for each slide
