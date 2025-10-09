@@ -1,35 +1,40 @@
 'use client'
-import { Dot, Key, MoveLeft, MoveRight } from 'lucide-react'
+import { Dot, MoveLeft, MoveRight } from 'lucide-react'
 import Image from 'next/image'
 import React from 'react'
 import { AnimatePresence, motion } from "motion/react"
 
 const services = [
     {
+        id: 0,
         title: 'construction services',
         description: 'Executing complex projects with accuracy, safety, and efficiency. Our teams deliver civil, mechanical, and structural works seamlessly. We turn engineering blueprints into sustainable infrastructure.',
         image: '/construction.png',
         slug: 'construction',
     },
     {
+        id: 1,
         title: 'Procurement services',
         description: 'Reliable sourcing of equipment, materials, and technology worldwide. We ensure cost-effective, timely, and quality-controlled supply chains. Our procurement process reduces risks and maximizes project value.',
         image: '/procure.jpg',
         slug: 'procurement',
     },
     {
+        id: 2,
         title: 'Installation services',
         description: 'Onshore and offshore installation expertise across multiple sectors. We deploy modern equipment and skilled teams for flawless execution. From pipelines to platforms, our installations stand the test of time.',
         image: '/install.jpg',
         slug: 'installation',
     },
     {
+        id: 3,
         title: 'Commissioning services',
         description: 'Ensuring every system functions as designed before handover. We conduct rigorous testing, validation, and quality checks. Delivering operational readiness with zero compromise on safety.',
         image: '/commission.jpg',
         slug: 'commissioning',
     },
     {
+        id: 4,
         title: 'Engineering services',
         description: 'our engineering services helps companies to solve all of this countries problems in a type of way.',
         image: '/engineer.jpg',
@@ -70,7 +75,7 @@ const Services = () => {
                     return next
                 }
             })
-        }, 10000)
+        }, 7000)
         return () => {
             if (timer.current) {
                 clearInterval(timer.current)
@@ -80,6 +85,12 @@ const Services = () => {
 
     return (
         <section className='min-h-[calc(100vh)] relative flex overflow-clip w-full no-scrollbar'>
+            <Image
+              src={'/construction.png'}
+              alt={'construction'}
+              className="object-cover absolute inset-0"
+              fill
+            />
             <div className='flex overflow-auto relative w-full'>
                 {
                     services?.map((item, i) => (  
@@ -208,7 +219,7 @@ const Service = ({
                         exit={{ opacity: 0.3, y: i * 4 }}
                         transition={{ duration: 1, delay: i * 0.1 }}
                         whileHover={{ scale: 1.05 }}
-                        onClick={() => goTo?.(i)}
+                        onClick={() => goTo?.(thumb.id)}
                         className="flex relative flex-col justify-end w-[188px] h-[237px] rounded-lg overflow-hidden shrink-0 cursor-pointer"
                         >
                         <Image

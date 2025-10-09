@@ -31,7 +31,7 @@ const Trust = () => {
           }
         </div>
       </div>
-      <p className="font-bold text-[#444444] text-3xl md:text-5xl mt-28 leading-tight tracking-[-4%]">
+      <p className="font-bold text-[#444444] text-[2.7rem] md:text-5xl mt-28 leading-tight tracking-[-4%]">
         <VerticalCutText
           splitBy="characters"
           staggerDuration={0.025}

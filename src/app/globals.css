@@ -116,6 +116,8 @@
 *::before,
 *::after {
   box-sizing: border-box;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 
 @layer base {
@@ -138,8 +140,12 @@
 
 /* // scrollbar */
 ::-webkit-scrollbar {
-  width: 0.5rem;
-  height: 0.5rem;
+  /* width: 0.5rem;
+  height: 0.5rem; */
+  width: 0rem;
+  height: 0rem;
+  display: none;
+
 }
 ::-webkit-scrollbar-track {
   background: transparent;
