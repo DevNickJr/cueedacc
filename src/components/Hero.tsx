@@ -9,6 +9,9 @@ const Hero = () => {
             height="240"
             className='object-cover absolute top-0 left-0 z-0 w-full h-full'
             autoPlay
+            loop
+            muted
+            playsInline
             src={"/people_person.mp4"}
         />
         <div className='relative py-6 w-full text-white md:py-14 lg:py-24 section z-1 bg-black/60 lg:min-h-[calc(100vh-72px)]'>
