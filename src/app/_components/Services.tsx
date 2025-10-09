@@ -84,7 +84,7 @@ const Services = () => {
     }, [reset])
 
     return (
-        <section className='min-h-[calc(100vh)] relative flex overflow-clip w-full no-scrollbar bg-[url(/construction.png)]'>
+        <section className='min-h-[140vh] md:min-h-[calc(100vh)] relative flex overflow-x-clip w-full no-scrollbar bg-[url(/procure.jpg)]'>
             <div className='flex overflow-auto relative w-full'>
                 {
                     services?.map((item, i) => (  
@@ -125,11 +125,11 @@ const Service = ({
     prev?: () => void;
   }) => {
     return (
-      <AnimatePresence>
+      <AnimatePresence initial={true} mode='wait'>
         {current === item.id && (
           <motion.div
             key={item.slug} // ✅ unique key for each slide
-            className="flex relative flex-col flex-1 w-full"
+            className="flex absolute inset-0 flex-col flex-1 w-full"
             initial={{ opacity: 0.3 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0.3 }}
@@ -164,7 +164,7 @@ const Service = ({
               animate={{ opacity: 1 }}
               exit={{ opacity: 0.3 }}
               transition={{ duration: 1 }}
-              className="flex relative z-10 flex-1 items-end py-6 w-full text-white md:py-12 lg:py-18"
+              className="flex relative z-10 flex-1 items-center py-6 w-full text-white md:items-end md:py-12 lg:py-18"
             >
               <div className="flex flex-col gap-4 justify-end pl-4 w-full md:justify-start md:items-end md:flex-row md:gap-10 lg:gap-20 md:pl-12 lg:pl-20">
                 <div className="mb-24 max-w-[380px] w-full shrink-0">
