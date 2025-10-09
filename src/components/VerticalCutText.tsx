@@ -155,9 +155,13 @@ const VerticalCutText = forwardRef<VerticalCutTextRef, TextProps>(
     }, [isInView, startAnimation])
 
     const variants = {
-      hidden: { y: reverse ? "-100%" : "100%" },
+      hidden: { 
+        opacity: 0.4,
+        // y: reverse ? "-100%" : "100%",
+      },
       visible: (i: number) => ({
-        y: 0,
+        opacity: 1,
+        // y: 0,
         transition: {
           ...transition,
           delay: ((transition?.delay as number) || 0) + getStaggerDelay(i),

@@ -4,7 +4,8 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Dot, MoveLeft, MoveRight } from "lucide-react";
 import Footer from "@/components/Footer";
-import VerticalCutText from "@/components/VerticalCutText";
+import Trust from "./_components/Trust";
+import Services from "./_components/Services";
 
 export default function Home() {
   return (
@@ -12,127 +13,8 @@ export default function Home() {
       <Header />
       <main className="">
         <Hero />
-        <section className="py-20 leading-tight text-black section">
-          <div className="max-w-[1200px] mx-auto">
-            <div className="flex flex-col gap-6 items-center">
-              <h2 className="text-lg font-medium text-center">We are trusted by top companies such as this</h2>
-              <div className="flex flex-wrap gap-7">
-                {
-                  [
-                    '/company_twig.png',
-                    '/company_hurl.png',
-                    '/company_honoura.png',
-                    '/company_potent.png',
-                    '/company_petra.png',
-                  ].map((company, i) => (
-                    <Image
-                      key={i}
-                      src={company}
-                      width={161}
-                      height={51}
-                      alt={company} 
-                    />
-                  ))
-                }
-              </div>
-            </div>
-            <p className="font-bold text-[#444444] text-5xl mt-28 leading-tight tracking-[-4%]">
-              <VerticalCutText
-                splitBy="characters"
-                staggerDuration={0.025}
-                staggerFrom="first"
-                transition={{
-                  type: "spring",
-                  stiffness: 200,
-                  damping: 21,
-                  delay: 0.5
-                }}
-                  >
-                     Our mission is to dominate our selected industries and disciplines, maintain a market position ahead of our competitors in these areas, and be the acknowledged Performance Leader in our industry.
-                </VerticalCutText>
-             
-            </p>
-          </div>
-        </section>
-        <section className='relative'>
-          <Image 
-              width="320"
-              height="240"
-              alt="Construction"
-              className='object-cover absolute top-0 left-0 z-0 w-full h-full'
-              src={"/constructions.png"}
-          />
-          <Image 
-              width="320"
-              height="240"
-              alt="Blur"
-              className='object-cover absolute top-0 left-0 z-0 w-full h-full bg-transparent'
-              src={"/blur.png"}
-          />
-          <div className='relative py-6 w-full text-white md:py-12 lg:py-18 z-1 lg:min-h-[calc(100vh)] flex items-end'>
-            <div className="flex gap-4 items-end pl-4 md:gap-10 lg:gap-20 md:pl-12 lg:pl-20">
-              <div className="mb-24 max-w-[330px] shrink-0">
-                <div className="flex items-center gap-0.5 rounded-full py-2.5 pr-3 border border-white w-fit">
-                  <Dot />
-                  <span>Our Sevices</span>
-                </div>
-                <h2 className="mt-12 text-3xl font-bold">
-                  construction services
-                </h2>
-                <p className="mt-5 mb-28 text-lg font-medium">
-                Executing complex projects with accuracy, safety, and efficiency. Our teams deliver civil, mechanical, and structural works seamlessly. We turn engineering blueprints into sustainable infrastructure.
-                </p>
-                <div className="flex gap-2 items-center">
-                  <span className="flex justify-center items-center p-1.5 rounded-full bg-white">
-                    <MoveLeft size={11} color="#000" className="text-xs" />
-                  </span>
-                  <span className="flex justify-center items-center p-1.5 rounded-full bg-white">
-                    <MoveRight size={11} color="#000" className="text-xs" />
-                  </span>
-                </div>
-              </div>
-              <div className="flex overflow-auto flex-1 gap-7 pr-20 no-scrollbar">
-                {
-                  [
-                    {
-                      image: '/procure.jpg',
-                      name: 'procurement',
-                    },
-                    {
-                      image: '/construct.jpg',
-                      name: 'construction',
-                    },
-                    {
-                      image: '/install.jpg',
-                      name: 'installation',
-                    },
-                    {
-                      image: '/commission.jpg',
-                      name: 'commissioning',
-                    },
-                    {
-                      image: '/engineer.jpg',
-                      name: 'engineering',
-                    },
-                  ].map((item, i) => (
-                    <div key={i} className="flex relative flex-col justify-end w-[188px] h-[237px] rounded-lg overflow-hidden shrink-0 cursor-pointer">
-                      <Image 
-                        width="320"
-                        height="240"
-                        alt="Blur"
-                        className='object-cover absolute top-0 left-0 z-0 w-full h-full bg-transparent rounded-lg'
-                        src={item.image}
-                      />
-                      <div className="backdrop-blur-xs z-1">
-                        <span className="block px-3 py-8 text-lg font-semibold text-whit">{item.name}</span>
-                      </div>
-                    </div>
-                  ))
-                }
-              </div>
-            </div>
-          </div>
-        </section>
+        <Trust />
+        <Services />
         <section className="section leading-tight tracking-[-4%] text-black py-20">
           <div className="mx-auto">
             <div className="flex flex-col items-center">
