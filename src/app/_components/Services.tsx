@@ -84,18 +84,11 @@ const Services = () => {
     }, [reset])
 
     return (
-        <section className='min-h-[calc(100vh)] relative flex overflow-clip w-full no-scrollbar'>
-            <Image
-              src={'/construction.png'}
-              alt={'construction'}
-              className="object-cover absolute inset-0"
-              fill
-            />
+        <section className='min-h-[calc(100vh)] relative flex overflow-clip w-full no-scrollbar bg-[url(/construction.png)]'>
             <div className='flex overflow-auto relative w-full'>
                 {
                     services?.map((item, i) => (  
                         <Service
-                            index={i}
                             current={curr}
                             key={i}
                             item={item}
@@ -117,12 +110,11 @@ const Service = ({
     goTo,
     next,
     prev,
-    index,
     current,
   }: {
-    index: number;
     current: number;
     item: {
+      id: number;
       title: string;
       description: string;
       image: string;
@@ -134,7 +126,7 @@ const Service = ({
   }) => {
     return (
       <AnimatePresence>
-        {current === index && (
+        {current === item.id && (
           <motion.div
             key={item.slug} // ✅ unique key for each slide
             className="flex relative flex-col flex-1 w-full"
@@ -181,6 +173,7 @@ const Service = ({
                     <span>Our Services</span>
                   </div>
                   <motion.h2 
+                    key={`${item.slug}-h1`}
                     initial={{ opacity: 0.3, y: 4 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0.3, y: 4 }}
@@ -194,12 +187,14 @@ const Service = ({
                   </p>
                   <div className="flex gap-2 items-center">
                     <motion.span 
+                        key={`${item.slug}-left`}
                         whileTap={{ scale: 1.2 }}
                         whileHover={{ scale: 1.1 }}
                         onClick={() => prev?.()}  className="flex justify-center cursor-pointer items-center p-1.5 rounded-full bg-white">
                       <MoveLeft className='cursor-pointer'size={11} color="#000" />
                     </motion.span>
                     <motion.span 
+                        key={`${item.slug}-right`}
                         whileTap={{ scale: 1.2 }}
                         whileHover={{ scale: 1.1 }}
                         onClick={() => next?.()}  className="flex justify-center cursor-pointer items-center p-1.5 rounded-full bg-white">
@@ -213,14 +208,14 @@ const Service = ({
                     <div className="flex overflow-auto flex-1 gap-7 pr-20 no-scrollbar">
                     {services.filter((_, i) => i != current).map((thumb, i) => (
                         <motion.div
-                        key={`${thumb.slug}-thumb`}
-                        initial={{ opacity: 0.3, y: i * 4 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0.3, y: i * 4 }}
-                        transition={{ duration: 1, delay: i * 0.1 }}
-                        whileHover={{ scale: 1.05 }}
-                        onClick={() => goTo?.(thumb.id)}
-                        className="flex relative flex-col justify-end w-[188px] h-[237px] rounded-lg overflow-hidden shrink-0 cursor-pointer"
+                            key={`${thumb.slug}-thumb`}
+                            initial={{ opacity: 0.3, y: i * 4 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0.3, y: i * 4 }}
+                            transition={{ duration: 1, delay: i * 0.1 }}
+                            whileHover={{ scale: 1.05 }}
+                            onClick={() => goTo?.(thumb.id)}
+                            className="flex relative flex-col justify-end w-[188px] h-[237px] rounded-lg overflow-hidden shrink-0 cursor-pointer"
                         >
                         <Image
                             width="320"
