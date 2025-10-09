@@ -17,12 +17,12 @@ export default function Home() {
         <Services />
         <section className="section leading-tight tracking-[-4%] text-black py-20">
           <div className="mx-auto">
-            <div className="flex flex-col items-center">
-              <div className="flex items-center gap-0.5 rounded-full py-2.5 pr-3 border border-[#CDCDCD] w-fit mb-2.5">
+            <div className="flex flex-col items-center gap-3.5">
+              <div className="flex items-center gap-0.5 rounded-full py-2.5 pr-3 border border-[#CDCDCD] w-fit">
                 <Dot />
                 <span>Our core values</span>
               </div>
-              <div className="flex w-full max-w-[1278px] border border-white relative">
+              <div className="flex w-full flex-wrap max-w-[1278px] border border-white relative">
                 {
                   [
                     {
@@ -50,16 +50,16 @@ export default function Home() {
                       meaning: 'Safety',
                     },
                   ].map((item, i) => (
-                    <div key={i} className={`flex flex-col gap-4 items-center md:flex-1 px-6 py-4 leading-[96px] tracking-[-4%] flex-1 border-y border-r border-[#CDCDCD] ${i == 0 ? "border-l" : ""}`}>
-                      <span className='text-[96px] font-bold'>{item.name}</span>                
-                      <span className='text-lg font-medium text-[#FB4808]'>{item.meaning}</span>                
+                    <div key={i} className={`flex flex-col gap-4 items-center md:flex-1 px-6 py-4 leading-[96px] tracking-[-4%] flex-1 border-y border border-[#CDCDCD] ${i == 0 ? "" : ""}`}>
+                      <span className='text-5xl font-bold md:text-6xl'>{item.name}</span>                
+                      <span className='text-base md:text-lg font-medium text-[#FB4808]'>{item.meaning}</span>                
                     </div>
                   ))
                 }
               
               </div>
             </div>
-            <p className="font-bold text-[#444444] text-5xl mt-24 max-w-[1278px] mx-auto leading-tight tracking-[-4%]">
+            <p className="font-bold text-[#444444] text-4xl md:text-5xl mt-24 max-w-[1278px] mx-auto leading-tight tracking-[-4%]">
             Our vision is to look into the future to maintain a market position ahead of our rivals in the disciplines and sectors we have chosen.
             </p>
             <div className="relative mt-20 rounded-2xl bg-[url(/procurement.jpg)] overflow-hidden bg-cover">
@@ -75,7 +75,7 @@ export default function Home() {
                 />
               <div className='relative w-full text-white z-1 lg:min-h-[calc(100vh-72px)] flex items-center'>
                 <div className='flex flex-col gap-14 max-w-[680px] relative section z-1  py-6 md:py-14 lg:py-24'>
-                    <h3 className='text-5xl font-semibold leading-tight tracking-[-4%]'>Building tomorrow&apos;s energy infrastructure, today</h3>
+                    <h3 className='text-4xl md:text-5xl font-semibold leading-tight tracking-[-4%]'>Building tomorrow&apos;s energy infrastructure, today</h3>
                     <Button className='px-10 py-3 font-semibold text-black bg-white rounded-none w-fit'>
                       Partner with us
                     </Button>

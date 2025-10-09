@@ -1,10 +1,10 @@
 import React from 'react'
 import Image from 'next/image'
-import { LocateIcon, Mail, MailIcon, Phone } from 'lucide-react'
+import { LocateIcon, MailIcon, Phone } from 'lucide-react'
 
 const Footer = () => {
   return (
-    <footer className='flex py-5 w-full text-white bg-black md:py-10 lg:py-28 section'>
+    <footer className='flex flex-col py-5 w-full text-white bg-black lg:flex-row md:py-10 lg:py-28 section'>
         <div className='flex flex-col w-full text-lg border border-white flex-[3_0_200px]'>
             <div className='flex flex-col gap-4 p-6 border-b'>
                 <LocateIcon size={18} color='#fff' />
@@ -25,7 +25,7 @@ const Footer = () => {
                 </div>
             </div>
         </div>
-        <div className='flex flex-col gap-6 justify-center items-center p-4 w-full border border-l-0 border-white  flex-[2_0_200px]'>
+        <div className='flex flex-col gap-6 justify-center text-center items-center p-4 w-full border border-t-0 lg:border-t lg:border-l-0 border-white  flex-[2_0_200px]'>
             <span className='text-lg'>CAC registration number:</span>
             <Image
                 className=""

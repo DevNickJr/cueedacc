@@ -124,17 +124,11 @@
   }
 
   html {
-    /* font-family: var(--font-inter); */
-    scroll-behavior: smooth;
-    width: 100vw;
-    max-width: 1600px;
-    overflow-x: clip;
-    margin-left: auto;
-    margin-right: auto;
+    @apply overflow-x-hidden mx-auto w-screen scroll-smooth max-w-[1600px]; /* font-family: var(--font-inter); */
   }
   
   body {
-    @apply w-full bg-background text-foreground;
+    @apply mx-auto w-full bg-background text-foreground max-w-screen;
   }
 }
 

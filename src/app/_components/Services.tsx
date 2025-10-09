@@ -70,7 +70,7 @@ const Services = () => {
                     return next
                 }
             })
-        }, 6000)
+        }, 10000)
         return () => {
             if (timer.current) {
                 clearInterval(timer.current)
@@ -79,20 +79,22 @@ const Services = () => {
     }, [reset])
 
     return (
-        <section className='lg:min-h-[calc(100vh)] relative flex'>
-            {
-                services?.map((item, i) => (  
-                    <Service
-                        index={i}
-                        current={curr}
-                        key={i}
-                        item={item}
-                        goTo={(index) => handleClick(index)}
-                        next={() => handleClick(curr+1)}
-                        prev={() => handleClick(curr-1)}
-                    />
-                )
-            )}
+        <section className='min-h-[calc(100vh)] relative flex overflow-clip w-full'>
+            <div className='flex overflow-auto relative w-full'>
+                {
+                    services?.map((item, i) => (  
+                        <Service
+                            index={i}
+                            current={curr}
+                            key={i}
+                            item={item}
+                            goTo={(index) => handleClick(index)}
+                            next={() => handleClick(curr+1)}
+                            prev={() => handleClick(curr-1)}
+                        />
+                    )
+                )}
+            </div>
         </section>
     )
 }
@@ -124,7 +126,7 @@ const Service = ({
         {current === index && (
           <motion.div
             key={item.slug} // ✅ unique key for each slide
-            className="flex absolute inset-0 flex-col"
+            className="flex relative flex-col flex-1 w-full"
             initial={{ opacity: 0.3 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0.3 }}
@@ -161,8 +163,8 @@ const Service = ({
               transition={{ duration: 1 }}
               className="flex relative z-10 flex-1 items-end py-6 w-full text-white md:py-12 lg:py-18"
             >
-              <div className="flex gap-4 items-end pl-4 md:gap-10 lg:gap-20 md:pl-12 lg:pl-20">
-                <div className="mb-24 max-w-[380px] shrink-0">
+              <div className="flex flex-col gap-4 justify-end pl-4 w-full md:justify-start md:items-end md:flex-row md:gap-10 lg:gap-20 md:pl-12 lg:pl-20">
+                <div className="mb-24 max-w-[380px] w-full shrink-0">
                   <div className="flex items-center gap-0.5 rounded-full py-2.5 pr-3 border border-white w-fit">
                     <Dot />
                     <span>Our Services</span>
@@ -196,32 +198,34 @@ const Service = ({
                 </div>
   
                 {/* Thumbnails */}
-                <div className="flex overflow-auto flex-1 gap-7 pr-20 no-scrollbar">
-                  {services.filter((_, i) => i != current).map((thumb, i) => (
-                    <motion.div
-                      key={`${thumb.slug}-thumb`}
-                      initial={{ opacity: 0.3, y: i * 4 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0.3, y: i * 4 }}
-                      transition={{ duration: 1, delay: i * 0.1 }}
-                      whileHover={{ scale: 1.05 }}
-                      onClick={() => goTo?.(i)}
-                      className="flex relative flex-col justify-end w-[188px] h-[237px] rounded-lg overflow-hidden shrink-0 cursor-pointer"
-                    >
-                      <Image
-                        width="320"
-                        height="240"
-                        alt={thumb.slug}
-                        className="object-cover overflow-hidden absolute top-0 left-0 z-0 w-full h-full bg-transparent rounded-lg"
-                        src={thumb.image}
-                      />
-                      <div className="z-10 backdrop-blur-xs">
-                        <span className="block px-3 py-8 text-lg font-semibold">
-                          {thumb.slug}
-                        </span>
-                      </div>
-                    </motion.div>
-                  ))}
+                <div className='overflow-x-hidden flex-1'>
+                    <div className="flex overflow-auto flex-1 gap-7 pr-20 no-scrollbar">
+                    {services.filter((_, i) => i != current).map((thumb, i) => (
+                        <motion.div
+                        key={`${thumb.slug}-thumb`}
+                        initial={{ opacity: 0.3, y: i * 4 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0.3, y: i * 4 }}
+                        transition={{ duration: 1, delay: i * 0.1 }}
+                        whileHover={{ scale: 1.05 }}
+                        onClick={() => goTo?.(i)}
+                        className="flex relative flex-col justify-end w-[188px] h-[237px] rounded-lg overflow-hidden shrink-0 cursor-pointer"
+                        >
+                        <Image
+                            width="320"
+                            height="240"
+                            alt={thumb.slug}
+                            className="object-cover overflow-hidden absolute top-0 left-0 z-0 w-full h-full bg-transparent rounded-lg"
+                            src={thumb.image}
+                        />
+                        <div className="z-10 backdrop-blur-xs">
+                            <span className="block px-3 py-8 text-lg font-semibold">
+                            {thumb.slug}
+                            </span>
+                        </div>
+                        </motion.div>
+                    ))}
+                    </div>
                 </div>
               </div>
             </motion.div>

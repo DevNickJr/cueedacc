@@ -1,14 +1,18 @@
+"use client"
 import VerticalCutText from '@/components/VerticalCutText'
+import { useInView } from 'motion/react'
 import Image from 'next/image'
 import React from 'react'
 
 const Trust = () => {
+  const ref = React.useRef(null)
+  const isInView = useInView(ref)
   return (
     <section className="py-20 leading-tight text-black section">
     <div className="max-w-[1200px] mx-auto">
       <div className="flex flex-col gap-6 items-center">
-        <h2 className="text-lg font-medium text-center">We are trusted by top companies such as this</h2>
-        <div className="flex flex-wrap gap-7 justify-center">
+        <h2 className="text-base font-medium text-center md:text-lg">We are trusted by top companies such as this</h2>
+        <div className="flex flex-wrap gap-5 justify-center md:gap-7">
           {
             [
               '/company_twig.png',
@@ -23,12 +27,13 @@ const Trust = () => {
                 width={161}
                 height={51}
                 alt={company} 
+                className='w-[120px] h-[41px] md:w-[161px] md:h-[51px]'
               />
             ))
           }
         </div>
       </div>
-      <p className="font-bold text-[#444444] text-5xl mt-28 leading-tight tracking-[-4%]">
+      <p className="font-bold text-[#444444] text-4xl md:text-5xl mt-28 leading-tight tracking-[-4%]">
         <VerticalCutText
           splitBy="characters"
           staggerDuration={0.025}
@@ -39,6 +44,7 @@ const Trust = () => {
             damping: 21,
             delay: 0.5
           }}
+          isInView={isInView}
             >
                Our mission is to dominate our selected industries and disciplines, maintain a market position ahead of our competitors in these areas, and be the acknowledged Performance Leader in our industry.
           </VerticalCutText>
