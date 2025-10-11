@@ -1,11 +1,22 @@
 import React from 'react'
 import Image from 'next/image'
 import { LocateIcon, MailIcon, Phone } from 'lucide-react'
+import Logo from '@/assets/logo-white.svg'
 
 const Footer = () => {
   return (
     <footer className='flex flex-col py-5 w-full text-white bg-black lg:flex-row md:py-10 lg:py-28 section'>
         <div className='flex flex-col w-full text-lg border border-white flex-[3_0_200px]'>
+            <div className='flex flex-col gap-4 p-6 border-b'>
+                <Image
+                    className="text-white dark:invert md:w-56 md:h-14"
+                    src={Logo}
+                    alt="Logo"
+                    width={224}
+                    height={50}
+                    priority
+                />
+            </div>
             <div className='flex flex-col gap-4 p-6 border-b'>
                 <LocateIcon size={18} color='#fff' />
                 <p>Lane 4 Ohia Igbogo Muolu Ozuoba, Cornerstone Road by Zita Spring Extension Port Harcourt, Rivers State, Nigeria.</p>

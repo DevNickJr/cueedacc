@@ -36,7 +36,7 @@ const services = [
     {
         id: 4,
         title: 'Engineering services',
-        description: 'our engineering services helps companies to solve all of this countries problems in a type of way.',
+        description: 'Innovative designs that combine efficiency, safety, and sustainability. From feasibility studies to detailed engineering, we deliver precision. Every solution is tailored to meet international standards and local need.',
         image: '/engineer.jpg',
         slug: 'engineering',
     },
@@ -60,44 +60,63 @@ const Services = () => {
         setReset(prev => !prev)
     }
     
-    React.useEffect(() => {
-        if (timer.current) {
-            clearInterval(timer.current)
-        }
-        timer.current = setInterval(() => {
-            setCurr((curr) => {
-                const next = curr + 1
-                if (next > services.length - 1) {
-                    return 0
-                } else if (next < 0) {
-                    return services.length - 1
-                } else {
-                    return next
-                }
-            })
-        }, 7000)
-        return () => {
-            if (timer.current) {
-                clearInterval(timer.current)
-            }
-        }
-    }, [reset])
+    // React.useEffect(() => {
+    //     if (timer.current) {
+    //         clearInterval(timer.current)
+    //     }
+    //     timer.current = setInterval(() => {
+    //         setCurr((curr) => {
+    //             const next = curr + 1
+    //             if (next > services.length - 1) {
+    //                 return 0
+    //             } else if (next < 0) {
+    //                 return services.length - 1
+    //             } else {
+    //                 return next
+    //             }
+    //         })
+    //     }, 7000)
+    //     return () => {
+    //         if (timer.current) {
+    //             clearInterval(timer.current)
+    //         }
+    //     }
+    // }, [reset])
 
     return (
-        <section className='min-h-[140vh] md:min-h-[calc(100vh)] relative flex overflow-x-clip w-full no-scrollbar bg-[url(/procure.jpg)]'>
-            <div className='flex overflow-auto relative w-full'>
+
+        <section className='relative pl-6 md:pl-12 lg:px-20 flex flex-col items-center gap-3.5 overflow-x-clip w-full no-scrollbar'>
+            <div className="flex items-center gap-0.5 rounded-full py-2.5 pr-3 border border-[#CDCDCD] w-fit">
+              <Dot />
+              <span>Our Services</span>
+            </div>
+            <div className='flex overflow-auto relative gap-6 w-full md:gap-9'>
                 {
                     services?.map((item, i) => (  
                         <Service
                             current={curr}
                             key={i}
                             item={item}
-                            goTo={(index) => handleClick(index)}
-                            next={() => handleClick(curr+1)}
-                            prev={() => handleClick(curr-1)}
+                            // goTo={(index) => handleClick(index)}
+                            // next={() => handleClick(curr+1)}
+                            // prev={() => handleClick(curr-1)}
                         />
                     )
                 )}
+            </div>
+            <div className="flex gap-2 items-center">
+              <motion.span 
+                  whileTap={{ scale: 1.2 }}
+                  whileHover={{ scale: 1.1 }}
+                  onClick={() => handleClick(curr-1)} className="flex justify-center cursor-pointer items-center p-1.5 rounded-full bg-[#F5F5F5] h-16 w-16 shrink-0 flex-1">
+                <MoveLeft className='cursor-pointer'size={12} color="#FB4808" />
+              </motion.span>
+              <motion.span 
+                  whileTap={{ scale: 1.2 }}
+                  whileHover={{ scale: 1.1 }}
+                  onClick={() => handleClick(curr+1)} className="flex justify-center cursor-pointer items-center p-1.5 rounded-full bg-[#F5F5F5] h-16 w-16 shrink-0 flex-1">
+                <MoveRight className='cursor-pointer' size={12} color="#FB4808" />
+              </motion.span>
             </div>
         </section>
     )
@@ -107,10 +126,6 @@ export default Services
 
 const Service = ({
     item,
-    goTo,
-    next,
-    prev,
-    current,
   }: {
     current: number;
     item: {
@@ -120,124 +135,67 @@ const Service = ({
       image: string;
       slug: string;
     };
-    goTo?: (index: number) => void;
-    next?: () => void;
-    prev?: () => void;
   }) => {
     return (
-      <AnimatePresence initial={true} mode='wait'>
-        {current === item.id && (
-          <motion.div
-            key={item.slug} // ✅ unique key for each slide
-            className="flex absolute inset-0 flex-col flex-1 w-full"
-            initial={{ opacity: 0.3 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0.3 }}
-            transition={{ duration: 1 }}
-          >
-            {/* Background image */}
-            <motion.img
-              key={`${item.slug}-bg`} // ✅ unique key
-              src={item.image}
-              alt={item.title}
-              className="object-cover absolute top-0 left-0 z-0 w-full h-full"
-              initial={{ opacity: 0.3 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0.3 }}
-              transition={{ duration: 1 }}
-            />
-            {/* Blur overlay */}
-            <motion.img
-              key={`${item.slug}-blur`}
-              src="/blur.png"
-              alt="Blur"
-              className="object-cover absolute top-0 left-0 z-0 w-full h-full bg-transparent"
-              initial={{ opacity: 0.3 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0.3 }}
-              transition={{ duration: 1 }}
-            />
-            {/* Content */}
-            <motion.div
-              key={`${item.slug}-content`}
-              initial={{ opacity: 0.3 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0.3 }}
-              transition={{ duration: 1 }}
-              className="flex relative z-10 flex-1 items-center py-6 w-full text-white md:items-end md:py-12 lg:py-18"
-            >
-              <div className="flex flex-col gap-4 justify-end pl-4 w-full md:justify-start md:items-end md:flex-row md:gap-10 lg:gap-20 md:pl-12 lg:pl-20">
-                <div className="mb-24 max-w-[380px] w-full shrink-0">
-                  <div className="flex items-center gap-0.5 rounded-full py-2.5 pr-3 border border-white w-fit">
-                    <Dot />
-                    <span>Our Services</span>
-                  </div>
-                  <motion.h2 
-                    key={`${item.slug}-h1`}
-                    initial={{ opacity: 0.3, y: 4 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0.3, y: 4 }}
-                    transition={{ duration: 1, delay: 0.2 }}
-                    className="mt-12 text-3xl font-bold"
-                  >
-                        {item.title}
-                    </motion.h2>
-                  <p className="mt-5 mb-28 text-lg font-medium min-h-40">
-                    {item.description}
-                  </p>
-                  <div className="flex gap-2 items-center">
-                    <motion.span 
-                        key={`${item.slug}-left`}
-                        whileTap={{ scale: 1.2 }}
-                        whileHover={{ scale: 1.1 }}
-                        onClick={() => prev?.()}  className="flex justify-center cursor-pointer items-center p-1.5 rounded-full bg-white">
-                      <MoveLeft className='cursor-pointer'size={11} color="#000" />
-                    </motion.span>
-                    <motion.span 
-                        key={`${item.slug}-right`}
-                        whileTap={{ scale: 1.2 }}
-                        whileHover={{ scale: 1.1 }}
-                        onClick={() => next?.()}  className="flex justify-center cursor-pointer items-center p-1.5 rounded-full bg-white">
-                      <MoveRight className='cursor-pointer' size={11} color="#000" />
-                    </motion.span>
-                  </div>
-                </div>
-  
-                {/* Thumbnails */}
-                <div className='overflow-x-hidden flex-1'>
-                    <div className="flex overflow-auto flex-1 gap-7 pr-20 no-scrollbar">
-                    {services.filter((_, i) => i != current).map((thumb, i) => (
-                        <motion.div
-                            key={`${thumb.slug}-thumb`}
-                            initial={{ opacity: 0.3, y: i * 4 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            exit={{ opacity: 0.3, y: i * 4 }}
-                            transition={{ duration: 1, delay: i * 0.1 }}
-                            whileHover={{ scale: 1.05 }}
-                            onClick={() => goTo?.(thumb.id)}
-                            className="flex relative flex-col justify-end w-[188px] h-[237px] rounded-lg overflow-hidden shrink-0 cursor-pointer"
-                        >
-                        <Image
-                            width="320"
-                            height="240"
-                            alt={thumb.slug}
-                            className="object-cover overflow-hidden absolute top-0 left-0 z-0 w-full h-full bg-transparent rounded-lg"
-                            src={thumb.image}
-                        />
-                        <div className="z-10 backdrop-blur-xs">
-                            <span className="block px-3 py-8 text-lg font-semibold">
-                            {thumb.slug}
-                            </span>
-                        </div>
-                        </motion.div>
-                    ))}
-                    </div>
-                </div>
-              </div>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      <motion.div
+        key={item.slug} // ✅ unique key for each slide
+        className="flex flex-col flex-1 w-full min-w-80 md:min-w-96 md:w-full max-w-[450px] relative justify-end p-5 pb-20 h-[550px] md:h-[600px]"
+        initial={{ opacity: 0.3 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0.3 }}
+        transition={{ duration: 1 }}
+      >
+        {/* Background image */}
+        <motion.img
+          key={`${item.slug}-bg`} // ✅ unique key
+          src={item.image}
+          alt={item.title}
+          className="object-cover absolute top-0 left-0 z-0 w-full h-full"
+          initial={{ opacity: 0.3 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0.3 }}
+          transition={{ duration: 1 }}
+        />
+        {/* Blur overlay */}
+        <motion.img
+          key={`${item.slug}-blur`}
+          src="/blur.png"
+          alt="Blur"
+          className="object-cover absolute top-0 left-0 z-0 w-full h-full bg-transparent"
+          initial={{ opacity: 0.3 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0.3 }}
+          transition={{ duration: 1 }}
+        />
+        <div className="flex absolute inset-0 flex-col justify-end p-6 z-1 md:p-12 lg:p-18 bg-black/60" />
+        {/* Content */}
+        <motion.div
+          key={`${item.slug}-content`}
+          initial={{ opacity: 0.3 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0.3 }}
+          transition={{ duration: 1 }}
+          className="flex relative z-10 flex-1 items-center w-full text-white md:items-end"
+        >
+          <div className="flex flex-col gap-4 justify-end pl-4 w-full md:justify-start md:items-end md:flex-row">
+            <div className="max-w-[380px] w-full shrink-0">
+              <motion.h2 
+                key={`${item.slug}-h1`}
+                initial={{ opacity: 0.3, y: 4 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0.3, y: 4 }}
+                transition={{ duration: 1, delay: 0.2 }}
+                className="mt-12 text-3xl font-bold"
+              >
+                    {item.title}
+                </motion.h2>
+              <p className="mt-5 text-lg font-medium min-h-40">
+                {item.description}
+              </p>
+            </div>
+          </div>
+        </motion.div>
+      </motion.div>
     );
 };
   
