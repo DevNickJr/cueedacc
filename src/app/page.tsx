@@ -6,7 +6,7 @@ import { Dot, MoveLeft, MoveRight } from "lucide-react";
 import Footer from "@/components/Footer";
 import Trust from "./_components/Trust";
 import Services from "./_components/Services";
-import VerticalCutText from '@/components/VerticalCutText'
+import ScrollFadeText from "@/components/TextReveal";
 
 export default function Home() {
   return (
@@ -16,7 +16,7 @@ export default function Home() {
         <Hero />
         <Trust />
         <Services />
-        <section className="section leading-tight tracking-[-4%] text-black py-20">
+        <section className="section leading-tight tracking-[-0.04em] text-black py-20">
           <div className="mx-auto">
             <div className="flex flex-col items-center gap-3.5">
               <div className="flex items-center gap-0.5 rounded-full py-2.5 pr-3 border border-[#CDCDCD] w-fit">
@@ -51,7 +51,7 @@ export default function Home() {
                       meaning: 'Safety',
                     },
                   ].map((item, i) => (
-                    <div key={i} className={`w-full max-w-80 flex flex-col gap-4 items-center md:flex-1 p-6 leading-[96px] tracking-[-4%] flex-1 border-y border border-[#CDCDCD] ${i == 0 ? "" : ""}`}>
+                    <div key={i} className={`w-full max-w-80 flex flex-col gap-4 items-center md:flex-1 p-6 flex-1 border-y border border-[#CDCDCD] ${i == 0 ? "" : ""}`}>
                       <span className='text-8xl font-bold'>{item.name}</span>                
                       <span className='text-xl font-medium text-[#FB4808]'>{item.meaning}</span>                
                     </div>
@@ -60,9 +60,11 @@ export default function Home() {
               
               </div>
             </div>
-            <p className="font-bold text-[#444444] text-[2.1rem] md:text-5xl mt-24 max-w-[1278px] mx-auto leading-tight tracking-[-4%]">
-        
-                    Our vision is to look into the future to maintain a market position ahead of our rivals in the disciplines and sectors we have chosen.
+            <p className="font-bold text-[#444444] text-[2.1rem] md:text-5xl mt-24 max-w-[1278px] mx-auto leading-tight tracking-[-0.04em]">
+            <ScrollFadeText
+              text="Our vision is to look into the future to maintain a market position ahead of our rivals in the disciplines and sectors we have chosen."
+            />
+              
             </p>
             <div className="relative mt-20 rounded-2xl bg-[url(/procurement.jpg)] bg-center overflow-hidden bg-cover">
               {/* <Image
@@ -77,10 +79,12 @@ export default function Home() {
                 />
               <div className='relative w-full text-white z-1 min-h-96 lg:min-h-[calc(100vh-72px)] flex items-end md:items-center'>
                 <div className='flex flex-col gap-4 md:gap-14 max-w-[680px] relative section z-1  py-6 md:py-14 lg:py-24'>
-                    <h3 className='text-xl md:text-5xl font-semibold leading-tight tracking-[-4%]'>Building tomorrow&apos;s energy infrastructure, today</h3>
-                    <Button className='px-10 py-3 font-semibold text-black bg-white rounded-none w-fit'>
-                      Partner with us
-                    </Button>
+                    <h3 className='text-xl md:text-5xl font-semibold leading-tight tracking-[-0.04em]'>Building tomorrow&apos;s energy infrastructure, today</h3>
+                    <a href="#footer">
+                      <Button className='px-10 py-3 font-semibold text-black bg-white rounded-none transition-colors duration-200 hover:text-white w-fit'>
+                        Partner with us
+                      </Button>
+                    </a>
                 </div>
               </div>
             </div>

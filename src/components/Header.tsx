@@ -14,9 +14,11 @@ const Header = () => {
           height={34}
           priority
         />
-        <Button>
-          Send us a message
-        </Button>
+        <a href="#footer">
+          <Button>
+              Send us a message
+          </Button>
+        </a>
     </header>
   )
 }

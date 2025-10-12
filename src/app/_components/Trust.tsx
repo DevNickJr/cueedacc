@@ -1,4 +1,5 @@
 "use client"
+import ScrollFadeText from '@/components/TextReveal'
 import VerticalCutText from '@/components/VerticalCutText'
 import Image from 'next/image'
 import React from 'react'
@@ -31,8 +32,8 @@ const Trust = () => {
           }
         </div>
       </div>
-      <p className="font-bold text-[#444444] text-[2.4rem] md:text-5xl mt-28 leading-tight tracking-[-4%]">
-        <VerticalCutText
+      <p className="font-bold text-[#444444] text-[2.4rem] md:text-5xl mt-28 leading-tight tracking-[-0.04em]">
+        {/* <VerticalCutText
           splitBy="characters"
           staggerDuration={0.025}
           staggerFrom="first"
@@ -43,9 +44,12 @@ const Trust = () => {
             delay: 0.5
           }}
             >
-               Our mission is to dominate our selected industries and disciplines, maintain a market position ahead of our competitors in these areas, and be the acknowledged Performance Leader in our industry.
-          </VerticalCutText>
-       
+               
+          </VerticalCutText> */}
+          <ScrollFadeText
+            text="Our mission is to dominate our selected industries and disciplines, maintain a market position ahead of our competitors in these areas, and be the acknowledged Performance Leader in our industry."
+          />
+
       </p>
     </div>
   </section>

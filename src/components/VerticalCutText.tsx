@@ -1,6 +1,6 @@
 "use client"
 
-import { AnimationOptions, motion, useInView } from "motion/react"
+import { AnimationOptions, motion, useInView, useScroll, useSpring, useTransform } from "motion/react"
 import {
   forwardRef,
   useCallback,
@@ -65,6 +65,12 @@ const VerticalCutText = forwardRef<VerticalCutTextRef, TextProps>(
     ref
   ) => {
     const containerRef = useRef<HTMLSpanElement>(null)
+    const { scrollYProgress } = useScroll({
+      target: containerRef,
+      offset: ["start end", "end end"]
+    })
+    const width = useTransform(scrollYProgress, [0, 1], ["0%", "100%"])
+    console.log({ scrollYProgress })
     const isInView = useInView(containerRef)
     const text =
       typeof children === "string" ? children : children?.toString() || ""
@@ -143,7 +149,7 @@ const VerticalCutText = forwardRef<VerticalCutTextRef, TextProps>(
       }
     }, [autoStart, startAnimation])
 
-    console.log({ isInView })
+    // console.log({ isInView })
     useEffect(() => {
       if (isInView) {
         startAnimation()
@@ -178,6 +184,20 @@ const VerticalCutText = forwardRef<VerticalCutTextRef, TextProps>(
         ref={containerRef}
         {...props}
       >
+        <motion.span
+          style={{
+            position: "fixed",
+            height: "45px",
+            width: width,
+            backgroundColor: "red",
+            zIndex: 9999,
+            top: 10,
+            left: 10,
+            // width: scrollYProgress.current * ,
+          }}
+        >
+
+        </motion.span>
         <span className="sr-only">{text}</span>
 
         {(splitBy === "characters"
