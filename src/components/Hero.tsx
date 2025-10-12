@@ -16,7 +16,7 @@ const Hero = () => {
         />
         <div className='relative py-15 w-full text-white md:py-14 lg:py-24 section z-1 bg-black/60 lg:min-h-[calc(100vh-72px)]'>
             <div className='flex flex-col gap-6 max-w-[720px] relative'>
-                <h1 className='text-5xl font-semibold leading-tight -ider'>Engineering the Future, Powered by Technology. Built by Trust</h1>
+                <h1 className='text-5xl font-semibold leading-tight tracking-[-0.05em] md:tracking-normal'>Engineering the Future, Powered by Technology. Built by Trust</h1>
                 <p className='text-xl font-medium leading-tight tracking-[-0.04em]'>CUEEDACC  is an indigenous Nigerian company, driven by technology in providing Engineering, Procurement, Construction, Onshore and Offshore Installation (EPCI) to various sectors</p>
                 <a href="#services">
                     <Button className='mt-6 font-medium rounded-none w-fit'>

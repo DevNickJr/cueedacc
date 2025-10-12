@@ -17,9 +17,9 @@ export default function ScrollFadeText({ text }: { text: string }) {
         {characters.map((char, i) => {
             const len = characters.length;
             const init = (Math.round((i / len) * 100)/100);
-            const start = init - 0.25;
-            const initEnd = init - 0.2;
-            const end = initEnd > 0.15 ? initEnd : 0.1; // adjust fade length (smaller = faster fade)
+            const start = init - 0.2;
+            const initEnd = init - 0.1;
+            const end = initEnd; // adjust fade length (smaller = faster fade)
             return (
             <TextReveal
                 key={i}
@@ -47,17 +47,22 @@ const TextReveal = ({
   start: number,
   end: number,
 }) => {
-    const rawOpacity = useTransform(scrollYProgress, [start, end], [0.1, 1], { clamp: false })
+    const rawOpacity = useTransform(scrollYProgress, [start, end], [0.4, 1], { clamp: false })
 
     // Clamp manually so it stays visible once passed
     const opacity = useTransform(rawOpacity, value => Math.min(value, 1))
     return (
-        <motion.span
-            key={i}
-            style={{ opacity }}
-            className="whitespace-pre"
-        >
+        <span className="relative">
+          <span className="absolute whitespace-pre opacity-10">
             {char}
-        </motion.span>
+          </span>
+          <motion.span
+              key={i}
+              style={{ opacity }}
+              className="whitespace-pre"
+          >
+              {char}
+          </motion.span>
+        </span>
     )
 }
