@@ -10,7 +10,7 @@ export default function ScrollFadeText({ text }: { text: string }) {
   })
 
   // Break text into characters
-  const characters = text.split("")
+  const characters = text.split(" ")
 
   return (
     <motion.span ref={containerRef} className="flex flex-wrap whitespace-pre-wrap">
@@ -21,14 +21,19 @@ export default function ScrollFadeText({ text }: { text: string }) {
             const initEnd = init - 0.1;
             const end = initEnd; // adjust fade length (smaller = faster fade)
             return (
-            <TextReveal
+              <span
                 key={i}
-                char={char}
-                i={i}
-                scrollYProgress={scrollYProgress}
-                start={start}
-                end={end}
-            />)
+              >
+                <TextReveal
+                    char={char}
+                    i={i}
+                    scrollYProgress={scrollYProgress}
+                    start={start}
+                    end={end}
+                />
+                <span>{" "}</span>
+              </span>
+          )
         })}
     </motion.span>
   )

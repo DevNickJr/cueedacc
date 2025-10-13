@@ -100,12 +100,12 @@ const Services = () => {
     // }, [reset])
 
     return (
-        <section id='services' className='relative pl-6 md:pl-12 lg:px-20 flex flex-col items-center gap-3.5 overflow-x-clip w-full no-scrollbar'>
-            <div className="flex items-center gap-0.5 rounded-full py-2.5 pr-3 border border-[#CDCDCD] w-fit">
+        <section id='services' className='flex relative flex-col gap-10 items-center pl-6 w-full md:pl-12 lg:px-20 overflow-x-clip no-scrollbar'>
+            <div className="flex items-center font-semibold gap-0.5 rounded-full py-2.5 pr-3 border border-[#CDCDCD] w-fit">
               <Dot />
               <span>Our Services</span>
             </div>
-            <div ref={ref} className='flex overflow-auto relative gap-6 pr-6 w-full md:gap-9'>
+            <div ref={ref} className='overflow-clip flex overflow-x-auto relative gap-6 pr-6 w-full md:gap-9 min-h-[450px] md:min-h-[500px]'>
                 {
                     services?.map((item, i) => (  
                         <Service
@@ -154,66 +154,101 @@ const Service = ({
     ref: React.RefObject<HTMLDivElement | null>
   }) => {
     return (
-      <motion.div
-        ref={ref}
-        key={item.slug} // ✅ unique key for each slide
-        className="flex flex-col flex-1 w-full min-w-80 md:min-w-96 md:w-full max-w-[450px] relative justify-end p-7 pb-20 h-[550px] md:h-[600px] shadow"
-        initial={{ opacity: 0.3 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0.3 }}
-        transition={{ duration: 1 }}
-      >
-        {/* Background image */}
-        <motion.img
-          key={`${item.slug}-bg`} // ✅ unique key
-          src={item.image}
-          alt={item.title}
-          className="object-cover absolute top-0 left-0 z-0 w-full h-full"
-          initial={{ opacity: 0.3 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0.3 }}
+      <div className='flex flex-col flex-1 w-full h-full min-w-80 md:min-w-96 max-w-[450px]'>
+        <motion.div
+          ref={ref}
+          key={item.slug} // ✅ unique key for each slide
+          className="flex flex-col flex-1 w-full min-w-80 md:min-w-96 max-w-[450px] relative justify-end p-7 pb-16 min-h-[450px] md:min-h-[500px] shadow cursor-pointer "
+          initial={"initial"}
+          animate={"animate"}
+          exit={"exit"}
+          whileHover={"hover"}
           transition={{ duration: 1 }}
           // on parent hover
-        />
-        {/* Blur overlay */}
-        <motion.img
-          key={`${item.slug}-blur`}
-          src="/blur.png"
-          alt="Blur"
-          className="object-cover absolute top-0 left-0 z-0 w-full h-full bg-transparent"
-          initial={{ opacity: 0.3 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0.3 }}
-          transition={{ duration: 1 }}
-        />
-        <div className="flex absolute inset-0 flex-col justify-end p-6 z-1 md:p-12 lg:p-18 bg-black/60" />
-        {/* Content */}
-        <motion.div
-          key={`${item.slug}-content`}
-          initial={{ opacity: 0.3 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0.3 }}
-          transition={{ duration: 1 }}
-          whileHover={{ scale: 1.05 }}
-          className="flex relative z-10 flex-col flex-1 justify-end items-center w-full h-full text-white cursor-pointer md:items-end"
+          variants={{
+            initial: { opacity: 0.3 },
+            animate: { opacity: 1 },
+            exit: { opacity: 0.3 },
+            hover: {
+              transition: {
+                // after child
+                duration: 0.2,
+                when: "afterChildren",
+              },
+            },
+          }}
         >
-          <div className="max-w-[380px] w-full shrink-0">
-            <motion.h2 
-              key={`${item.slug}-h1`}
-              initial={{ opacity: 0.3, y: 4 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0.3, y: 4 }}
-              transition={{ duration: 1, delay: 0.2 }}
-              className="text-3xl font-bold"
-            >
-                  {item.title}
+          {/* Background image */}
+          <motion.img
+            key={`${item.slug}-bg`} // ✅ unique key
+            src={item.image}
+            alt={item.title}
+            className="object-cover absolute top-0 left-0 z-0 w-full h-full"
+            initial={{ opacity: 0.3 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0.3 }}
+            transition={{ duration: 1 }}
+            // on parent hover
+          />
+          {/* Blur overlay */}
+          <motion.img
+            key={`${item.slug}-blur`}
+            src="/blur2.png"
+            alt="Blur"
+            className="object-cover absolute top-0 left-0 z-0 w-full h-full bg-transparent"
+            initial={{ opacity: 0.3 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0.3 }}
+            transition={{ duration: 1 }}
+          />
+          {/* <div className="flex absolute inset-0 flex-col justify-end p-6 z-1 md:p-12 lg:p-18 bg-black/60" /> */}
+          {/* Content */}
+          <div
+            key={`${item.slug}-content`}
+            className="flex relative z-10 flex-col flex-1 justify-end items-center w-full h-full text-white cursor-pointer md:items-end"
+          >
+            <div className="max-w-[380px] w-full shrink-0">
+              <motion.h2 
+                key={`${item.slug}-h1`}
+                variants={{
+                  initial: { 
+                    opacity: 0.3,
+                    y: 130,
+                  },
+                  animate: { 
+                    opacity: 1,
+                    y: 135,
+                  },
+                  exit: { opacity: 0.3, y: 4 },
+                  hover: {
+                    y: 0,
+                  },
+                }}
+                transition={{ duration: 0.3, delay: 0.15 }}
+                className="text-2xl font-bold leading-tight -tracking-[0.02em]"
+              >
+                {item.title}
               </motion.h2>
-            <p className="mt-5 text-lg font-medium leading-tight min-h-40 -tracking-tight">
-              {item.description}
-            </p>
+              <motion.p
+                key={`${item.slug}-p`}
+                variants={{
+                  initial: {
+                    y: 400,
+                  },
+                  hover: {
+                    opacity: 1,
+                    y: 0,
+                  }
+                }}
+                transition={{ duration: 0.4, delay: 0.2 }}
+                className="mt-3 text-base font-medium leading-tight min-h-24 -tracking-[0.02em]"
+              >
+                {item.description}
+              </motion.p>
+            </div>
           </div>
         </motion.div>
-      </motion.div>
+      </div>
     );
 };
   

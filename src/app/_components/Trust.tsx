@@ -10,7 +10,7 @@ const Trust = () => {
     <section className="py-20 leading-tight text-black section">
     <div className="max-w-[1200px] mx-auto">
       <div className="flex flex-col gap-6 items-center">
-        <h2 className="text-xl font-medium text-center md:text-lg max-w-[280px]">We are trusted by top companies such as this</h2>
+        <h2 className="text-xl font-medium text-center md:text-lg max-w-[280px] md:max-w-none">We are trusted by top companies such as this</h2>
         <div className="flex flex-wrap gap-5 justify-center md:gap-7">
           {
             [

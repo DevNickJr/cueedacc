@@ -18,8 +18,8 @@ export default function Home() {
         <Services />
         <section className="section leading-tight tracking-[-0.04em] text-black py-20">
           <div className="mx-auto">
-            <div className="flex flex-col items-center gap-3.5">
-              <div className="flex items-center gap-0.5 rounded-full py-2.5 pr-3 border border-[#CDCDCD] w-fit">
+            <div className="flex flex-col gap-10 items-center">
+              <div className="flex items-center font-semibold gap-0.5 rounded-full py-2.5 pr-3 border border-[#CDCDCD] w-fit">
                 <Dot />
                 <span>Our core values</span>
               </div>
