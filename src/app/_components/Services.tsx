@@ -1,16 +1,15 @@
 'use client'
 import { Dot, MoveLeft, MoveRight } from 'lucide-react'
-import Image from 'next/image'
 import React from 'react'
-import { AnimatePresence, motion } from "motion/react"
+import { motion } from "motion/react"
 
 const services = [
-      {
-        id: 0,
-        title: 'Engineering services',
-        description: 'Innovative designs that combine efficiency, safety, and sustainability. From feasibility studies to detailed engineering, we deliver precision. Every solution is tailored to meet international standards and local need.',
-        image: '/engineer.jpg',
-        slug: 'engineering',
+    {
+      id: 0,
+      title: 'Engineering services',
+      description: 'Innovative designs that combine efficiency, safety, and sustainability. From feasibility studies to detailed engineering, we deliver precision. Every solution is tailored to meet international standards and local need.',
+      image: '/engineer.jpg',
+      slug: 'engineering',
     },
     {
       id: 1,
@@ -20,58 +19,58 @@ const services = [
       slug: 'procurement',
     },
     {
-        id: 2,
-        title: 'Construction services',
-        description: 'Executing complex projects with accuracy, safety, and efficiency. Our teams deliver civil, mechanical, and structural works seamlessly. We turn engineering blueprints into sustainable infrastructure.',
-        image: '/construction.png',
-        slug: 'construction',
+      id: 2,
+      title: 'Construction services',
+      description: 'Executing complex projects with accuracy, safety, and efficiency. Our teams deliver civil, mechanical, and structural works seamlessly. We turn engineering blueprints into sustainable infrastructure.',
+      image: '/construction.png',
+      slug: 'construction',
     },
     {
-        id: 3,
-        title: 'Installation services',
-        description: 'Onshore and offshore installation expertise across multiple sectors. We deploy modern equipment and skilled teams for flawless execution. From pipelines to platforms, our installations stand the test of time.',
-        image: '/install.jpg',
-        slug: 'installation',
+      id: 3,
+      title: 'Installation services',
+      description: 'Onshore and offshore installation expertise across multiple sectors. We deploy modern equipment and skilled teams for flawless execution. From pipelines to platforms, our installations stand the test of time.',
+      image: '/install.jpg',
+      slug: 'installation',
     },
     {
-        id: 4,
-        title: 'Commissioning services',
-        description: 'Ensuring every system functions as designed before handover. We conduct rigorous testing, validation, and quality checks. Delivering operational readiness with zero compromise on safety.',
-        image: '/commission.jpg',
-        slug: 'commissioning',
+      id: 4,
+      title: 'Commissioning services',
+      description: 'Ensuring every system functions as designed before handover. We conduct rigorous testing, validation, and quality checks. Delivering operational readiness with zero compromise on safety.',
+      image: '/commission.jpg',
+      slug: 'commissioning',
     },
 ]
 
 const Services = () => {
     // const [curr, setCurr] = React.useState(0);
-    const timer = React.useRef<NodeJS.Timeout>(null)
-    const [reset, setReset] = React.useState(false)
+    // const timer = React.useRef<NodeJS.Timeout>(null)
+    // const [reset, setReset] = React.useState(false)
     const ref = React.useRef<HTMLDivElement>(null)
     const cardRef = React.useRef<HTMLDivElement>(null) 
 
     const handleClick = (next: number) => {
       if (ref.current) {
         // ref.current.scrollLeft is the current scroll position
+        const scrollWidth = ref.current.scrollLeft
         // ref.current.offsetWidth is the width of the container
+        const containerWidth = ref.current.offsetWidth;
         // the cards are 320px on small screens and 480px on large screens
 
         const cardWidth = ((cardRef.current?.offsetWidth || 320) + 24) * next
-        console.log(cardWidth, cardRef.current?.offsetWidth, ref.current.scrollLeft, ref.current.offsetWidth)
+        // console.log(cardWidth, scrollWidth, containerWidth)
+        // if ((scrollWidth + cardWidth+70) >  containerWidth) {
+        //   ref.current.scrollTo({
+        //     left: 0,
+        //     behavior: 'smooth',
+        //   });
+        //   return
+        // }
+        // console.log(cardWidth, cardRef.current?.offsetWidth, ref.current.scrollLeft, ref.current.offsetWidth)
         ref.current.scrollTo({
-          left: ref.current.scrollLeft + cardWidth,
+          left: scrollWidth + cardWidth,
           behavior: 'smooth',
         });
       }
-        // setCurr(() => {
-        //     if (next > services.length - 1) {
-        //         return 0
-        //     } else if (next < 0) {
-        //         return services.length - 1
-        //     } else {
-        //         return next
-        //     }
-        // })
-        // setReset(prev => !prev)
     }
 
     
