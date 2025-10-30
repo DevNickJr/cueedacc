@@ -26,7 +26,7 @@ const Hero = () => {
             </div>
             <div className="flex mt-[5.5rem] w-full max-w-[777px] border border-white relative">
                 <div className='flex flex-col flex-1 p-2 py-3 leading-tight shrink-0 md:px-6 md:py-4 tracking-[-0.04em]'>
-                    <span className='text-4xl font-semibold md:text-5xl'>5+</span>                
+                    <span className='text-4xl font-semibold md:text-5xl'>8+</span>                
                     <span className='text-sm font-medium md:text-base'>years of service</span>                
                 </div>
                 <div className='flex flex-col flex-1 p-2 py-3 leading-tight shrink-0 md:px-6 md:py-4 tracking-[-0.04em] border-x'>

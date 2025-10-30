@@ -7,7 +7,7 @@ const Header = () => {
   return (
     <header className='flex gap-3 justify-between items-center py-5 w-full section'>
         <Image
-          className="w-28 h-7 dark:invert md:w-36 md:h-8"
+          className="w-36 h-9 dark:invert md:w-42 md:h-11"
           src={Logo}
           alt="Logo"
           width={142}
@@ -15,7 +15,7 @@ const Header = () => {
           priority
         />
         <a href="#footer">
-          <Button>
+          <Button className='rounded-none'>
               Send us a message
           </Button>
         </a>
